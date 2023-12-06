@@ -1,4 +1,4 @@
-"use client";
+"use client";//in app based nextjs this is used to differentiate a client component from server component
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "../../../node_modules/axios/index";
@@ -22,9 +22,9 @@ import { Task } from "./types";
     status: "To Do",
   }]);
   const addTask = (task: Task) => {
-    alert("adding task");
+    
     axios
-      .post("http://your-backend-url/tasks", task)
+      .post(process.env.API_END_POINT+'/task')
       .then((response) => {
         setTasks([...tasks, response.data]);
       })
@@ -40,8 +40,9 @@ import { Task } from "./types";
   };
   useEffect(() => {
     axios
-      .get("http://your-backend-url/tasks")
+      .get(process.env.NEXT_PUBLIC_API_END_POINT+'/task')
       .then((response) => {
+        console.log(response);
         setTasks(response.data);
       })
       .catch((error) => {
@@ -50,8 +51,8 @@ import { Task } from "./types";
   }, []);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <text>My Tasks</text>
-      <TaskList
+            My Tasks
+          <TaskList
         tasks={tasks}
         deleteTask={deleteTask}
         setCurrentTaskId={setCurrentTaskId}

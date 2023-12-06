@@ -7,7 +7,7 @@ export default function Home() {
       <Link href="/task"      
        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 >   
-           <text > View Tasks </text>
+            View Tasks 
           </Link>
           </li>
           <br></br>
