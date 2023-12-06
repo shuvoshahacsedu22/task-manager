@@ -24,7 +24,7 @@ import { Task } from "./types";
   const addTask = (task: Task) => {
     
     axios
-      .post(process.env.API_END_POINT+'/task')
+      .post(process.env.NEXT_PUBLIC_API_END_POINT+'/task')
       .then((response) => {
         setTasks([...tasks, response.data]);
       })
@@ -40,7 +40,7 @@ import { Task } from "./types";
   };
   useEffect(() => {
     axios
-      .get(process.env.NEXT_PUBLIC_API_END_POINT+'/task')
+      .get('https://task-manager-backend-service-9irr.onrender.com/task')
       .then((response) => {
         console.log(response);
         setTasks(response.data);
