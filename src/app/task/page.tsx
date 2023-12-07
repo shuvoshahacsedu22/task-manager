@@ -46,7 +46,6 @@ import { Task } from "./types";
     axios
       .get('https://task-manager-backend-service-9irr.onrender.com/task')
       .then((response) => {
-        console.log(response);
         setTasks(response.data);
       })
       .catch((error) => {
@@ -70,7 +69,7 @@ import { Task } from "./types";
           Add New Task
         </button>
         <TaskFormModal 
-        task={currentTaskId>=0?tasks[currentTaskId]:{id:'',title:'',status:'',description:''}} 
+        task={currentTaskId>=0?tasks[currentTaskId]:{_id:'',title:'',status:'',description:''}} 
         addTask={addTask} updateTask={updateTask} showModal={showModal} setShowModal={setShowModal} setCurrentTaskId={setCurrentTaskId} />
       </div>
 
