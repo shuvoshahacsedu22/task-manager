@@ -10,21 +10,10 @@ import { Task } from "./types";
  const TaskPage=()=> {
   const [showModal, setShowModal] = useState(false);
   const [currentTaskId,setCurrentTaskId] = useState<number>(-1);
-  const [tasks, setTasks] = useState<Task[]>([{
-    id: 1,
-    title: "task 1",
-    description: "task descripton 1",
-    status: "In Progress",
-  },{
-    id: 2,
-    title: "task 2",
-    description: "task descripton 2",
-    status: "To Do",
-  }]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const addTask = (task: Task) => {
-    
     axios
-      .post(process.env.NEXT_PUBLIC_API_END_POINT+'/task')
+      .post('https://task-manager-backend-service-9irr.onrender.com/task',task)
       .then((response) => {
         setTasks([...tasks, response.data]);
       })
@@ -33,10 +22,25 @@ import { Task } from "./types";
       });
   };
   const deleteTask = () => {
-    alert("deleting task");
+    axios
+    .delete('https://task-manager-backend-service-9irr.onrender.com/task')
+    .then((response) => {
+      setTasks([...tasks, response.data]);
+    })
+    .catch((error) => {
+      console.error("Error adding task", error);
+    });
   };
   const updateTask = (task: Task) => {
-    alert("updating task");
+    console.log(task);
+    axios
+      .patch('https://task-manager-backend-service-9irr.onrender.com/task',task)
+      .then((response) => {
+        setTasks([...tasks, response.data]);
+      })
+      .catch((error) => {
+        console.error("Error adding task", error);
+      });
   };
   useEffect(() => {
     axios

@@ -33,7 +33,7 @@ const TaskFormModal = ({
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (!title) return; // Basic form validation
-    if (task.id) updateTask({ id: task.id, title, description, status });
+    if (task._id) updateTask({ id: task._id, title, description, status });
     else addTask({ title, description, status });
     setCurrentTaskId(-1);
     setTitle("");
