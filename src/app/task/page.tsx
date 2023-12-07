@@ -69,7 +69,7 @@ import { Task } from "./types";
           Add New Task
         </button>
         <TaskFormModal 
-        task={currentTaskId>=0?tasks[currentTaskId]:{_id:'',title:'',status:'',description:''}} 
+        task={currentTaskId>=0?tasks[currentTaskId]:{ _id:'',title:'',status:'',description:''}} 
         addTask={addTask} updateTask={updateTask} showModal={showModal} setShowModal={setShowModal} setCurrentTaskId={setCurrentTaskId} />
       </div>
 
